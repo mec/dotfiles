@@ -32,3 +32,6 @@ BEIS
 
 # Gem words
 pagy
+
+# MTVH words
+MTVH
