@@ -276,6 +276,11 @@ autocmd FileType gitcommit setlocal colorcolumn=73
 autocmd FileType gitcommit setlocal colorcolumn+=51
 augroup END
 
+" env files
+augroup envfile
+autocmd BufNewFile,BufRead .env.* set filetype=sh
+augroup END
+
 " localorie switches to quickfix when called
 let g:localorie = { 'switch': 1 }
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
