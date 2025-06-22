@@ -12,9 +12,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-rails'
   Plug 'janko/vim-test'
   Plug 'dense-analysis/ale'
-  Plug '/usr/local/opt/fzf'
+  "Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'junegunn/fzf'
+  "Plug 'junegunn/fzf'
   Plug 'junegunn/seoul256.vim'
   Plug 'preservim/nerdtree'
   Plug 'ludovicchabant/vim-gutentags'
@@ -147,7 +148,7 @@ let g:fzf_layout = { 'down': '50%' }
 " Rg command
  command! -bang -nargs=* Find
     \ call fzf#vim#grep(
-    \   'rg --no-column --line-number  --no-heading --color=always --smart-case  -- '.shellescape(<q-args>), 1,
+    \   'RG --vimgrep --with-filename --no-column --line-number  --no-heading --color=always --smart-case  -- '.shellescape(<q-args>), 1,
     \   fzf#vim#with_preview(), <bang>0)
 
 " b for buffer search
