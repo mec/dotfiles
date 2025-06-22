@@ -62,3 +62,6 @@ export THOR_MERGE=vimdiff
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
+
+# Bitwarden ssh
+export SSH_AUTH_SOCK=/Users/mec/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock
