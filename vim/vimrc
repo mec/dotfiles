@@ -138,34 +138,26 @@ nnoremap gQ :echo "Don't know what Ex mode is"<CR>
 " source it
 command! Src execute 'source ~/.vimrc'
 
-" configure ack.vim for search with rg
-let g:ackprg = 'rg --vimgrep --ignore-case'
-let g:ack_use_cword_for_empty_search = 1
-let g:ack_qhandler = 'botright copen 30'
-
 " configure fzf
-let g:fzf_layout = { 'down': '20' }
+"let $FZF_DEFAULT_COMMAND = 'rg -l --smart-case ""'
+let g:fzf_vim = {}
+let g:fzf_layout = { 'down': '50%' }
 
-" I want to use 'ag' not 'grep'
-"set grepprg=ag\ --nogroup\ --silent\ --nocolor\ --column\ --vimgrep
-"set grepprg=rg\ --vimgrep\ --smart-case
-
-" Find is my command to find something, put it in the quickfix and redraw
-command! -nargs=+ Find execute 'Ack! <args>'
+" Find is my command to find content used ripgrep, it's a copy of the default
+" Rg command
+ command! -bang -nargs=* Find
+    \ call fzf#vim#grep(
+    \   'rg --no-column --line-number  --no-heading --color=always --smart-case  -- '.shellescape(<q-args>), 1,
+    \   fzf#vim#with_preview(), <bang>0)
 
 " b for buffer search
 nnoremap <leader>b :Buffers<cr>
 
 " F to search content
-nnoremap <leader>F :Find<space>
+nnoremap <leader>F :Find<cr>
 
 " f to search files
 nnoremap <leader>f :Files<cr>
-
-" Use ag in fzf for listing files. Lightning fast and respects .gitignore
-"let $FZF_DEFAULT_COMMAND = 'ag --literal -files-with-matches --nocolor --hidden -g ""'
-" use rg to find files
-let $FZF_DEFAULT_COMMAND = 'rg -l --vimgrep --ignore-case ""'
 
 " vim-test
 nnoremap <silent> <Leader>t :TestFile<CR>
