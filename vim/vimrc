@@ -170,7 +170,7 @@ nnoremap <silent> <Leader>L :TestLastFailures<CR>
 command! TestLastFailures execute 'TestLast --only-failures'
 
 let test#strategy = 'vimterminal'
-let test#enabled_runners = ["ruby#rspec", "ruby#minitest"]
+let test#enabled_runners = ["ruby#rspec", "ruby#minitest", "javascript#jest"]
 let test#ruby#rspec#executable = 'NO_COVERAGE=true bin/rspec'
 let test#ruby#use_binstubs = 1
 let test#vim#term_position = 'botright 30'
