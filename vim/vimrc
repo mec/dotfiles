@@ -241,6 +241,7 @@ let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_ruby_standardrb_executable = 'bundle'
 let g:ale_haml_hamllint_executable = 'bundle'
 let g:ale_haml_rubocop_executable = 'bundle'
+let g:ale_eruby_erblint_executable = 'bundle'
 
 " cspell config
 let g:ale_cspell_options = '--config ~/cspell.config.yml'
