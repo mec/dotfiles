@@ -15,48 +15,17 @@ call plug#begin('~/.vim/plugged')
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf'
+  Plug 'junegunn/seoul256.vim'
   Plug 'preservim/nerdtree'
   Plug 'ludovicchabant/vim-gutentags'
-  Plug 'airblade/vim-localorie'
+"  Plug 'airblade/vim-localorie'
   Plug 'airblade/vim-gitgutter'
-  Plug 'vimwiki/vimwiki'
+"  Plug 'vimwiki/vimwiki'
   Plug 'vim-airline/vim-airline'
-  Plug 'mileszs/ack.vim'
+"  Plug 'mileszs/ack.vim'
   Plug 'vim-scripts/VimCompletesMe'
+  Plug 'alvan/vim-closetag'
 call plug#end()
-
-" linters
-let g:ale_linters = {
-\   '*': ['cspell'],
-\   'markdown': ['cspell'],
-\   'ruby': ['standardrb', 'ruby-lsp', 'cspell'],
-\   'javascript': ['standard', 'cspell'],
-\   'haml': ['hamllint', 'rubocop', 'cspell'],
-\   'gitcommit': ['gitlint', 'cspell'],
-\   'eruby': ['erblint', 'cspell'],
-\   'vimwiki': ['cspell'],
-\   'eruby.yaml': ['cspell'],
-\}
-
-" fixers
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'markdown': ['prettier'],
-\   'eruby.yaml': ['prettier'],
-\}
-
-" setup Ruby-lsp
-call ale#linter#Define('ruby', {
-\   'name': 'ruby-lsp',
-\   'lsp': 'stdio',
-\   'command': 'ruby-lsp',
-\   'language': 'ruby',
-\   'executable': 'ruby-lsp',
-\   'project_root': function('ale#ruby#FindProjectRoot'),
-\})
-
-" only run linters I tell you to
-let g:ale_linters_explicit = 1
 
 " encoding
 set encoding=utf-8
@@ -225,6 +194,38 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeQuitOnOpen = 1
 
 " Ale
+" linters
+let g:ale_linters = {
+\   '*': ['cspell'],
+\   'markdown': ['cspell'],
+\   'ruby': ['rubocop', 'ruby-lsp', 'cspell'],
+\   'javascript': ['eslint', 'cspell'],
+\   'haml': ['hamllint', 'rubocop', 'cspell'],
+\   'gitcommit': ['gitlint', 'cspell'],
+\   'eruby': ['erblint', 'cspell'],
+\   'vimwiki': ['cspell'],
+\   'eruby.yaml': ['cspell'],
+\}
+
+" fixers
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'markdown': ['prettier'],
+\   'eruby.yaml': ['prettier'],
+\}
+
+" setup Ruby-lsp
+call ale#linter#Define('ruby', {
+\   'name': 'ruby-lsp',
+\   'lsp': 'stdio',
+\   'command': 'ruby-lsp',
+\   'language': 'ruby',
+\   'executable': 'ruby-lsp',
+\   'project_root': function('ale#ruby#FindProjectRoot'),
+\})
+
+" only run linters I tell you to
+let g:ale_linters_explicit = 1
 let g:ale_completion_enabled = 1
 let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_sign_error = '>>'
