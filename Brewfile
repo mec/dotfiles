@@ -7,6 +7,9 @@ brew 'vim'
 
 brew 'gitlint'
 
+# bat
+brew bat
+
 # direnv
 brew 'direnv'
 
@@ -54,17 +57,16 @@ brew 'ripgrep'
 brew 'fzf'
 
 # apps
-tap 'homebrew/cask-versions'
-
-cask '1Password'
-cask 'bitwarden'
 cask 'docker'
-cask 'firefox-developer-edition'
+cask 'firefox@developer-edition'
 cask 'github'
-cask 'google-chrome'
 cask 'postico'
 cask 'slack'
 cask 'gitify'
+
+# appstore
+
+mas 'bitwarden'
 
 # fonts
 cask 'font-ia-writer-mono'
